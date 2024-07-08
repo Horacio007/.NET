@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tarker.Booking.Domain.Entities.Booking
 {
-    internal class BookingEntity
+    public class BookingEntity
     {
         public int BookingId { get; set; }
         public DateTime RegisterDate { get; set; }
