@@ -10,11 +10,13 @@ namespace Tarker.Booking.Persistence.Configuration
 {
     public class CustomerConfiguration
     {
-        public CustomerConfiguration(EntityTypeBuilder<CustomerEntity> entityTypeBuilder) 
+        public CustomerConfiguration(EntityTypeBuilder<CustomerEntity> entityBuilder) 
         {
-            entityTypeBuilder.HasKey(x => x.CustomerId);
-            entityTypeBuilder.Property(x => x.FullName).IsRequired();
-            entityTypeBuilder.Property(x => x.DocumentNumber).IsRequired();
+            entityBuilder.HasKey(x => x.CustomerId);
+            entityBuilder.Property(x => x.FullName).IsRequired();
+            entityBuilder.Property(x => x.DocumentNumber).IsRequired();
+
+            entityBuilder.HasMany(x => x.Bookings).WithOne(x => x.Customer).HasForeignKey(x => x.CustomerId);
         }  
     }
 }

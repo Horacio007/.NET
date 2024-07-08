@@ -10,14 +10,17 @@ namespace Tarker.Booking.Persistence.Configuration
 {
     public class BookingConfiguration
     {
-        public BookingConfiguration(EntityTypeBuilder<BookingEntity> entityTypeBuilder) 
+        public BookingConfiguration(EntityTypeBuilder<BookingEntity> entityBuilder) 
         {
-            entityTypeBuilder.HasKey(x => x.BookingId);
-            entityTypeBuilder.Property(x => x.RegisterDate).IsRequired();
-            entityTypeBuilder.Property(x => x.Code).IsRequired();
-            entityTypeBuilder.Property(x => x.Type).IsRequired();
-            entityTypeBuilder.Property(x => x.UserId).IsRequired();
-            entityTypeBuilder.Property(x => x.CustomerId).IsRequired();
+            entityBuilder.HasKey(x => x.BookingId);
+            entityBuilder.Property(x => x.RegisterDate).IsRequired();
+            entityBuilder.Property(x => x.Code).IsRequired();
+            entityBuilder.Property(x => x.Type).IsRequired();
+            entityBuilder.Property(x => x.UserId).IsRequired();
+            entityBuilder.Property(x => x.CustomerId).IsRequired();
+
+            entityBuilder.HasOne(x => x.User).WithMany(x => x.Bookings).HasForeignKey(x => x.UserId);
+            entityBuilder.HasOne(x => x.Customer).WithMany(x => x.Bookings).HasForeignKey(x => x.CustomerId);
         }
     }
 }
