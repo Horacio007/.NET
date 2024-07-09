@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Tarker.Booking.Persistence.DataBase;
-using Tarker.Booking.Application.Interfaces;
+using Tarker.Booking.Application.DataBase;
 using Tarker.Booking.Api;
 using Tarker.Booking.Common;
 using Tarker.Booking.External;
