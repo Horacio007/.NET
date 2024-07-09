@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tarker.Booking.Application.Configuration;
 using Tarker.Booking.Application.DataBase.User.Commands.CreateUser;
+using Tarker.Booking.Application.DataBase.User.Commands.UpdateUser;
 
 namespace Tarker.Booking.Application
 {
@@ -21,6 +22,7 @@ namespace Tarker.Booking.Application
 
             services.AddSingleton(mapper.CreateMapper());
             services.AddTransient<ICreateUserCommand, CreateUserCommand>();
+            services.AddTransient<IUpdateUserCommand, UpdateUserCommand>();
 
             return services;
         }
